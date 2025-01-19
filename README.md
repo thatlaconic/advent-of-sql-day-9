@@ -49,8 +49,7 @@ FROM (SELECT rs.reindeer_id,
 				 ROW_NUMBER() OVER(PARTITION BY ts.exercise_name ORDER BY rs.reindeer_id)
 		FROM reindeers rs
 		JOIN training_sessions ts ON rs.reindeer_id = ts.reindeer_id
-		WHERE rs.reindeer_id !=  9
-		)
+		WHERE rs.reindeer_id != 9)
 GROUP BY reindeer_name, exercise_name
 ORDER BY avg_speed DESC
 LIMIT 3 ;
